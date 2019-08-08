@@ -1,6 +1,4 @@
-package hello.filter;
-
-import hello.auth.TenantStore;
+package hello.auth;
 
 import java.io.IOException;
 
@@ -15,12 +13,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 @Component
-public class AuthFilter extends OncePerRequestFilter {
+public class AuthFilterB extends OncePerRequestFilter {
 
-    private static final Logger log = LoggerFactory.getLogger(AuthFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(AuthFilterB.class);
     private final TenantStore tenantStore;
 
-    public AuthFilter(TenantStore tenantStore) {
+    public AuthFilterB(TenantStore tenantStore) {
         this.tenantStore = tenantStore;
     }
 

@@ -1,6 +1,4 @@
-package hello.interceptor;
-
-import hello.auth.TenantStore;
+package hello.auth;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

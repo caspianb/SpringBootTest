@@ -1,10 +1,6 @@
 package hello.auth;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.springframework.web.util.WebUtils;
 
 public class TenantStore {
 
@@ -19,12 +15,11 @@ public class TenantStore {
     }
 
     public void fromRequest(HttpServletRequest request) {
-        Cookie cookie = WebUtils.getCookie(request, "auth");
-        this.tenant = cookie != null ? cookie.getName() : "anon";
+        this.tenant = "John Doe";
     }
 
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this);
+        return "TenantStore@" + System.identityHashCode(this) + " tenant=" + tenant;
     }
 }
