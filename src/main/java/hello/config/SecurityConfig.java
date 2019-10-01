@@ -2,6 +2,7 @@ package hello.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -14,17 +15,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/hello").authenticated()
-                .anyRequest().permitAll();
+                .antMatchers("/login*").permitAll();
 
         // Add loginPage = /login to utilize /login view controller from MvcConfig
-        http.formLogin().loginPage("/login").and()
-                .logout().logoutSuccessUrl("/").permitAll();
+        http.formLogin()
+                .and().logout().logoutSuccessUrl("/").permitAll();
     }
 
     @Override
@@ -38,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
         UserDetails user =
                 User.withDefaultPasswordEncoder()
                         .username("user")
-                        .password("password")
+                        .password("user")
                         .roles("USER")
                         .build();
 

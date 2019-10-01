@@ -24,8 +24,6 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-security'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
-    compile group: 'org.springframework.retry', name: 'spring-retry'
 
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
 
