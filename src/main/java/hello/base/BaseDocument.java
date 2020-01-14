@@ -38,6 +38,14 @@ public abstract class BaseDocument implements Persistable<String> {
         this.id = id;
     }
 
+    public String getTenant() {
+        return tenant;
+    }
+
+    public void setTenant(String tenant) {
+        this.tenant = tenant;
+    }
+
     @Override
     public boolean isNew() {
         return id == null;
