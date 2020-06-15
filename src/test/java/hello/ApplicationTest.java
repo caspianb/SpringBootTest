@@ -12,18 +12,15 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.domain.Example;
-import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
 public class ApplicationTest {
 
     @Autowired
@@ -32,7 +29,7 @@ public class ApplicationTest {
 
     private final List<String> tenants = Arrays.asList("TENANT1", "TENANT2", "TENANT3");
 
-    @Before
+    @BeforeEach
     public void testSetup() {
         repository = context.getBean(OrderRepository.class);
         Random random = ThreadLocalRandom.current();
@@ -59,10 +56,10 @@ public class ApplicationTest {
         order.setTenant("TENANT2");
 
         List<Order> orders = repository.findAll(Example.of(order));
-        Assert.assertFalse(orders.isEmpty());
+        Assertions.assertFalse(orders.isEmpty());
 
         long count = repository.count(Example.of(order));
-        Assert.assertEquals(orders.size(), count);
+        Assertions.assertEquals(orders.size(), count);
 
         System.out.println(count);
     }

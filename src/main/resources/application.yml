@@ -1,11 +1,17 @@
 server:
   port: 8080
 
-spring.datasource:
-  url: jdbc:h2:mem:testdb
-  driverClassName: org.h2.Driver
-  username: sa
-  password:
+spring:
+  datasource:
+    #url: jdbc:h2:mem:testdb
+    #driverClassName: org.h2.Driver
+    #username: sa
+    #password:
+    url: jdbc:sqlserver://localhost:1433;databaseName=test
+    username: sa
+    password: Password123
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     show_sql: true
